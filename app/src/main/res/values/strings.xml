@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CSPC_544_Homework_1</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="solve_button_text">Solve</string>
 </resources>
