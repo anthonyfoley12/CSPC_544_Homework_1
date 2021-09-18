@@ -26,6 +26,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/black"
+        android:onClick="onSolve"
         android:text="@string/solve_button_text"
         android:textColor="@color/white"
         android:textSize="12sp"
