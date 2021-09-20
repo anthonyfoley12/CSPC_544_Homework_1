@@ -2,47 +2,64 @@ package com.example.cspc_544_homework_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
+import android.util.Log
+//import android.view.Gravity
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import org.w3c.dom.Text
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private val sideValues = ArrayList<Float>()
-    private val inputBoxes = arrayListOf(
-        R.id.editTextNumberDecimal,
-        R.id.editTextNumberDecimal4,
-        R.id.editTextNumberDecimal5
-    )
-    private final val minVal = 1.0
-    private final val maxVal = 100.0
-    private val messageBox = findViewById<TextView>(R.id.textView)
+    private var sideValues = ArrayList<Float>()
+    private var inputBoxes = ArrayList<Int>()
+    private val minVal = 1.0
+    private val maxVal = 100.0
+    private lateinit var messageBox: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setInputBoxes()
+        setMessageBox()
+        messageBox.setOnClickListener(){
+            this.onSolve()
+        }
     }
-
-    public fun onQuitButtonClicked(view: View) {
+    private fun setInputBoxes() {
+        inputBoxes.addAll(
+            listOf(
+                R.id.input_1,
+                R.id.input_2,
+                R.id.input_3
+            )
+        )
+    }
+    private fun setMessageBox() {
+        messageBox = findViewById<TextView>(R.id.textView)
+    }
+    fun onQuitButtonClicked(view: View) {
         val toastMessage = Toast.makeText(this@MainActivity, "Bye", Toast.LENGTH_SHORT)
 //        toastMessage.setGravity(Gravity.TOP, 0, 0)
         toastMessage.show()
     }
-    public fun onSolve(view: View) {
-        storeValues(view)
-        if (!validValues()){
-            messageBox.text = "Invalid Values. Please make sure all values are betwen 1.0 - 100.0."
-            // return
+    private fun onSolve() {
+        this.storeValues()
+        if (!this.validValues()){
+            messageBox.text = getString(R.string.invalidValuesMsg)
+            return
         }
-        if(!hasThreeSides()) {
-            // Set Output Message
-            // return
+        if(!this.hasThreeSides()) {
+            messageBox.text = getString(R.string.invalidEntiresMsg)
+            return
         }
         // solveTriangle()s
     }
-    private fun storeValues(view: View) {
+    private fun storeValues() {
         for (box in inputBoxes) {
             val btn = findViewById<EditText>(box)
             val value = btn.text.toString().toFloat()
@@ -57,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-    private fun hasThreeSides(): Boolean{
+     private fun hasThreeSides(): Boolean{
         return sideValues.size == 3
     }
 

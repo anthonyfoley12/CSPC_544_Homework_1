@@ -4,4 +4,6 @@
     <string name="solve_button_text">Solve</string>
     <string name="quit_button">Quit</string>
     <string name="display_results_text">Enter 3 lengths and press Solve</string>
+    <string name="invalidValuesMsg">Invalid Values. Please make sure all values are between 1.0 - 100.0.</string>
+    <string name="invalidEntiresMsg">Invalid Values. Please enter three (3) values.</string>
 </resources>

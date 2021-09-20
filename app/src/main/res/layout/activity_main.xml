@@ -26,7 +26,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/black"
-        android:onClick="onSolve"
         android:text="@string/solve_button_text"
         android:textColor="@color/white"
         android:textSize="12sp"
@@ -35,7 +34,7 @@
         app:layout_constraintStart_toEndOf="@+id/clear_button" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/input_1"
         android:layout_width="84dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -47,21 +46,21 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal4"
+        android:id="@+id/input_2"
         android:layout_width="84dp"
         android:layout_height="48dp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="56dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal5"
+        app:layout_constraintEnd_toStartOf="@+id/input_3"
         app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal"
+        app:layout_constraintStart_toEndOf="@+id/input_1"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal5"
+        android:id="@+id/input_3"
         android:layout_width="84dp"
         android:layout_height="48dp"
         android:layout_marginTop="108dp"
@@ -90,6 +89,6 @@
         android:text="@string/display_results_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal4" />
+        app:layout_constraintTop_toBottomOf="@+id/input_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
