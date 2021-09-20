@@ -47,6 +47,14 @@ class MainActivity : AppCompatActivity() {
 //        toastMessage.setGravity(Gravity.TOP, 0, 0)
         toastMessage.show()
     }
+
+    fun onSolveButtonClicked(view: View) {
+        if(!this.hasThreeInputs()) {
+            messageBox.text = getString(R.string.invalidEntiresMsg)
+            return
+        }
+    }
+
     private fun onSolve() {
         this.storeValues()
         if (!this.validValues()){
@@ -77,5 +85,17 @@ class MainActivity : AppCompatActivity() {
      private fun hasThreeSides(): Boolean{
         return sideValues.size == 3
     }
+
+    private fun hasThreeInputs(): Boolean {
+        for (box in inputBoxes) {
+            val btn = findViewById<EditText>(box)
+            if (btn.text.toString().isEmpty()) {
+                return false
+            }
+        }
+        return true
+    }
+
+
 
 }
