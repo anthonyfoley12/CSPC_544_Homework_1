@@ -1,5 +1,6 @@
 package com.example.cspc_544_homework_1
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -48,9 +49,16 @@ class MainActivity : AppCompatActivity() {
             )
         )
     }
+
+    private fun displayErrorMessage(message: String) {
+        messageBox.text = message
+        messageBox.setTextColor(Color.RED)
+    }
+
     private fun setMessageBox() {
         messageBox = findViewById<TextView>(R.id.textView)
     }
+
     fun onQuitButtonClicked(view: View) {
         val toastMessage = Toast.makeText(this@MainActivity, "Bye", Toast.LENGTH_SHORT)
 //        toastMessage.setGravity(Gravity.TOP, 0, 0)
@@ -59,8 +67,8 @@ class MainActivity : AppCompatActivity() {
 
     fun onSolveButtonClicked(view: View) {
         if(!this.hasThreeInputs()) {
-            messageBox.text = getString(R.string.invalidEntiresMsg)
-            return
+            val errorMessage = getString(R.string.invalidEntiresMsg)
+            displayErrorMessage(errorMessage)
         }
     }
 
