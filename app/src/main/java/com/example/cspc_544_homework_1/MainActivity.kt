@@ -30,6 +30,15 @@ class MainActivity : AppCompatActivity() {
             this.onSolve()
         }
     }
+
+    fun clearTextFields(view: View) {
+        for (box in inputBoxes) {
+            val btn = findViewById<EditText>(box)
+            btn.text.clear()
+        }
+        sideValues.clear()
+    }
+
     private fun setInputBoxes() {
         inputBoxes.addAll(
             listOf(

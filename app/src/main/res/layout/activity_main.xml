@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:backgroundTint="@color/black"
+        android:onClick="clearTextFields"
         android:text="@string/clear_button_text"
         android:textColor="@color/white"
         android:textSize="12sp"
