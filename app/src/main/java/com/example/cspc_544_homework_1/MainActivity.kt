@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             val btn = findViewById<EditText>(box)
             btn.text.clear()
         }
-        sideValues.clear()
+        //sideValues.clear()
     }
 
     private fun displayErrorMessage(message: String) {
@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         messageBox.setTextColor(Color.RED)
     }
 
-    private fun setMessageBox() {
-        messageBox = findViewById<TextView>(R.id.message_box)
+    private fun displayTriangleTypeMessage(message: String) {
+
     }
 
     fun onQuitButtonClicked(view: View) {
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
     fun onSolveButtonClicked(view: View) {
         clearSideValuesArr()
         storeValues()
-        if (inputsAreValid()){
-            //solveTriangle
+        if (inputsAreValid() and inputsAreTriangle()){
+            displayTriangleTypeMessage(getTriangleType())
         }
     }
 
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             return false
         }
         if(!this.hasThreeInputs()) {
-            displayErrorMessage(getString(R.string.invalidEntiresMsg))
+            displayErrorMessage(getString(R.string.invalidEntriesMsg))
             return false
         }
         return true
@@ -116,5 +116,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    private fun inputsAreTriangle(): Boolean{
+        return true
+    }
+
+    private fun getTriangleType(): String {
+        var sideA = sideValues[0]
+        var sideB = sideValues[1]
+        var sideC = sideValues[2]
+        if (sideA == sideB && sideC == sideB && sideA == sideC)
+            return getString(R.string.equilateral)
+        else if (sideA == sideB || sideB == sideC || sideA == sideC)
+            return getString(R.string.isosceles)
+        else
+            return getString(R.string.scalene)
     }
 }
