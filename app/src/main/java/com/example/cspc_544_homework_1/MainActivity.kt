@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         messageBox = findViewById(R.id.message_box)
         clearButton = findViewById(R.id.clear_button)
         solveButton = findViewById(R.id.solve_button)
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayTriangleTypeMessage(message: String) {
-
+        return
     }
 
     fun onQuitButtonClicked(view: View) {
