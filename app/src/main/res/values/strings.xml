@@ -7,6 +7,7 @@
     <string name="invalidValuesMsg">Invalid Values. Please make sure all values are between 1.0 - 100.0.</string>
     <string name="invalidEntriesMsg">Invalid Values. Please enter three (3) values.</string>
     <string name="triangleString">Invalid Values. Please enter three (3) values.</string>
+    <string name="notATraingle">Inputs do not make a triangle.</string>
     <string name="equilateral">Equilateral!</string>
     <string name="isosceles">Isosceles!</string>
     <string name="scalene">Scalene!</string>

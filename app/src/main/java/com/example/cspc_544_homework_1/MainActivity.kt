@@ -49,8 +49,14 @@ class MainActivity : AppCompatActivity() {
         for (box in inputBoxes) {
             val btn = findViewById<EditText>(box)
             btn.text.clear()
+            displayStartingMessage()
         }
-        //sideValues.clear()
+
+    }
+
+    private fun displayStartingMessage() {
+        messageBox.text = getString(R.string.display_results_text)
+        messageBox.setTextColor(Color.BLACK)
     }
 
     private fun displayErrorMessage(message: String) {
@@ -102,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validValues(): Boolean {
         for (item in inputBoxes) {
-            if (item < minVal || item > maxVal) {
+            if (item < minVal && item > maxVal) {
                 return false
             }
         }
@@ -119,8 +125,23 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun inputsAreTriangle(): Boolean{
-        return true
+    private fun inputsAreTriangle(): Boolean {
+
+        val sideA = sideValues[0]
+        val sideB = sideValues[1]
+        val sideC = sideValues[2]
+
+        var result = false
+
+        if ((sideA + sideB > sideC) &&
+            (sideA + sideC > sideB) &&
+            (sideB + sideC > sideA)) {
+            result = true
+        } else {
+            displayErrorMessage(getString(R.string.notATraingle))
+        }
+
+        return result
     }
 
     private fun getTriangleType(): String {
