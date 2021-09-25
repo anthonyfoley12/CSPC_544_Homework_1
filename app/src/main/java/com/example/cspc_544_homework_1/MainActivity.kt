@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validValues(): Boolean {
         for (item in inputBoxes) {
-            if (item < minVal && item > maxVal) {
+            if (item < minVal || item > maxVal) {
                 return false
             }
         }
