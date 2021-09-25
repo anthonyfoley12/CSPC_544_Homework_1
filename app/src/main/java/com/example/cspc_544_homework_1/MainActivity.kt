@@ -69,15 +69,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onQuitButtonClicked(view: View) {
-        val toastMessage = Toast.makeText(this@MainActivity, "Bye", Toast.LENGTH_SHORT)
-//        toastMessage.setGravity(Gravity.TOP, 0, 0)
-        toastMessage.show()
+        messageBox.setTextColor(Color.BLACK)
+        messageBox.text = getString(R.string.byeMsg)
     }
 
     fun onSolveButtonClicked(view: View) {
         clearSideValuesArr()
         storeValues()
-        if (inputsAreValid() && inputsAreTriangle()){
+//        if (inputsAreValid() && inputsAreTriangle()){
+//            displayTriangleTypeMessage(getTriangleType())
+//        }
+
+        if(inputsAreValid()) {
+            messageBox.setTextColor(Color.GREEN)
+            if(!inputsAreTriangle()) {
+                messageBox.setTextColor(Color.parseColor("#FFAE42"))
+            }
             displayTriangleTypeMessage(getTriangleType())
         }
     }
@@ -106,6 +113,7 @@ class MainActivity : AppCompatActivity() {
             displayErrorMessage(getString(R.string.invalidValuesMsg))
             return false
         }
+
         return true
     }
 

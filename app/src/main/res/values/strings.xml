@@ -11,4 +11,5 @@
     <string name="equilateral">Equilateral!</string>
     <string name="isosceles">Isosceles!</string>
     <string name="scalene">Scalene!</string>
+    <string name="byeMsg">Bye</string>
 </resources>
