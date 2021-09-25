@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     fun onSolveButtonClicked(view: View) {
         clearSideValuesArr()
         storeValues()
-        if (inputsAreValid() and inputsAreTriangle()){
+        if (inputsAreValid() && inputsAreTriangle()){
             displayTriangleTypeMessage(getTriangleType())
         }
     }
@@ -89,25 +89,28 @@ class MainActivity : AppCompatActivity() {
     private fun storeValues() {
         for (box in inputBoxes) {
             val btn = findViewById<EditText>(box)
-            val value = btn.text.toString().toFloat()
-            sideValues.add(value)
+            if (btn.text.toString().isNotEmpty()) {
+                val value = btn.text.toString()
+                sideValues.add(value.toFloat())
+            }
         }
     }
 
     private fun inputsAreValid(): Boolean {
-        if (!this.validValues()){
-            displayErrorMessage(getString(R.string.invalidValuesMsg))
+        // hasThreeInputs() must come first. validValues assumes sideValues is not empty
+        if(!hasThreeInputs()) {
+            displayErrorMessage(getString(R.string.invalidEntriesMsg))
             return false
         }
-        if(!this.hasThreeInputs()) {
-            displayErrorMessage(getString(R.string.invalidEntriesMsg))
+        if (!validValues()){
+            displayErrorMessage(getString(R.string.invalidValuesMsg))
             return false
         }
         return true
     }
 
     private fun validValues(): Boolean {
-        for (item in inputBoxes) {
+        for (item in sideValues) {
             if (item < minVal || item > maxVal) {
                 return false
             }
@@ -140,7 +143,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             displayErrorMessage(getString(R.string.notATraingle))
         }
-
         return result
     }
 
